@@ -21,7 +21,7 @@ namespace MELITranslate.Test
         {
             string binDot = "10";
 
-            var expected = ".";
+            var expected = ". .-.-.-";
             var actual = _translator.Translate(binDot);
 
             Assert.AreEqual(expected, actual);
@@ -30,20 +30,31 @@ namespace MELITranslate.Test
         [TestMethod]
         public void Given11InBinaryItShouldBeDecodedToEquivalentDashInMorse()
         {
-            string binDot = "11";
+            string binDash = "11";
 
-            var expected = "-";
-            var actual = _translator.Translate(binDot);
+            var expected = "- .-.-.-";
+            var actual = _translator.Translate(binDash);
 
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GivenHolaMeLiInBinaryItShouldBeDecodedToEquivalentInMorse()
+        public void GivenHolaMeLiWithFullStopInBinaryItShouldBeDecodedToEquivalentInMorse()
         {
-            string holaMeLiBin = "1010101001111111011011101001101100111101100110111010011010";
+            string holaMeLiBin = "101010100111111101101110100110110011110110011011101001101001101110111011";
 
-            var expected = ".... --- .-.. .-  -- . .-.. ..";
+            var expected = ".... --- .-.. .-  -- . .-.. .. .-.-.-";
+            var actual = _translator.Translate(holaMeLiBin);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GivenHolaMeLiWithLongPauseInBinaryItShouldBeDecodedToEquivalentInMorse()
+        {
+            string holaMeLiBin = "101010100111111101101110100110110011110110011011101001101000000000";
+
+            var expected = ".... --- .-.. .-  -- . .-.. .. .-.-.-";
             var actual = _translator.Translate(holaMeLiBin);
 
             Assert.AreEqual(expected, actual);

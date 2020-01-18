@@ -1,6 +1,7 @@
 ﻿using MELITranslate.Business.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MELITranslate.Business.TranslateTypes
@@ -15,7 +16,7 @@ namespace MELITranslate.Business.TranslateTypes
             {
                 result += GetMorseEquivalent(value.Substring(i, 2));
             }
-            return result;
+            return HasFullStop(result) ? result.TrimEnd() : SetFullStop(result);
         }
 
         private string GetMorseEquivalent(string binValue)
@@ -40,5 +41,11 @@ namespace MELITranslate.Business.TranslateTypes
             }
             return morseValue;
         }
+
+        private string SetFullStop(string morseValue)
+            => morseValue.TrimEnd() + " .-.-.-";
+
+        private bool HasFullStop(string morseValue)
+            => morseValue.Contains(".-.-.-");
     }
 }
