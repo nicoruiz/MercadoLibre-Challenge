@@ -1,0 +1,7 @@
+﻿/.vs/MELITranslate.API
+/MELITranslate.API/obj
+/MELITranslate.API/bin/Debug/netcoreapp3.1
+/MELITranslate.Business/bin/Debug/netstandard2.0
+/MELITranslate.Business/obj
+/MELITranslate.Test/obj
+/MELITranslate.Test/bin/Debug/netcoreapp3.1
