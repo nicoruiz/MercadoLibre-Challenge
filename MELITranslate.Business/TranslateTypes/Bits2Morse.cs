@@ -20,27 +20,7 @@ namespace MELITranslate.Business.TranslateTypes
         }
 
         private string GetMorseEquivalent(string binValue)
-        {
-            string morseValue = String.Empty;
-            switch(binValue)
-            {
-                case "10":
-                    morseValue = ".";
-                    break;
-                case "11":
-                    morseValue = "-";
-                    break;
-                case "01":
-                    morseValue = " ";
-                    break;
-                case "00":
-                    morseValue = "  ";
-                    break;
-                default:
-                    break;
-            }
-            return morseValue;
-        }
+            => TranslateTables.Bin2Morse[binValue];
 
         private string SetFullStop(string morseValue)
             => morseValue.TrimEnd() + " .-.-.-";

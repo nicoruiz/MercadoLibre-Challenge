@@ -1,6 +1,7 @@
 ﻿using MELITranslate.Business.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MELITranslate.Business.TranslateTypes
@@ -9,7 +10,13 @@ namespace MELITranslate.Business.TranslateTypes
     {
         public string Translate(string value)
         {
-            throw new NotImplementedException();
+            string result = String.Empty;
+            var mCodes = value.Split().Where(x => x != " ").ToList();
+            foreach (string mCode in mCodes)
+            {
+                result += mCode != "" ? TranslateTables.Morse2Text[mCode] : " ";
+            }
+            return result;
         }
     }
 }
