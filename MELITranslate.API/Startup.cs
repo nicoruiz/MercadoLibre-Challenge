@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MELITranslate.Business;
+using MELITranslate.Business.Interfaces;
+using MELITranslate.Business.TranslateTypes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +29,9 @@ namespace MELITranslate.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<ITranslateType, Bits2Morse>();
+            services.AddScoped<ITranslateType, Morse2Text>();
+            services.AddScoped<ITranslateType, Text2Morse>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

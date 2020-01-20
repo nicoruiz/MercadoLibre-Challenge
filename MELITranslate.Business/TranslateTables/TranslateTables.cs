@@ -53,7 +53,7 @@ namespace MELITranslate.Business
             { "7", MorseConstants.SEVEN },
             { "8", MorseConstants.EIGHT },
             { "9", MorseConstants.NINE },
-            { ".", MorseConstants.FULLSTOP }
+            { ".", MorseConstants.FULL_STOP }
         };
         #endregion
 
@@ -96,7 +96,7 @@ namespace MELITranslate.Business
             { MorseConstants.SEVEN, "7" },
             { MorseConstants.EIGHT, "8" },
             { MorseConstants.NINE, "9" },
-            { MorseConstants.FULLSTOP, "." }
+            { MorseConstants.FULL_STOP, "." }
         };
         #endregion
     }

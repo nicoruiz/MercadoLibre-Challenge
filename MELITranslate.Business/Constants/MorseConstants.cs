@@ -42,6 +42,6 @@ namespace MELITranslate.Business
         public const string SEVEN = "--...";
         public const string EIGHT = "---..";
         public const string NINE = "----.";
-        public const string FULLSTOP = ".-.-.-";
+        public const string FULL_STOP = ".-.-.-";
     }
 }
