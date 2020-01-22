@@ -1,6 +1,6 @@
 ﻿using MELITranslate.Business;
 using MELITranslate.Business.Interfaces;
-using MELITranslate.Business.TranslateTypes;
+using MELITranslate.Business.TranslateStrategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -11,11 +11,11 @@ namespace MELITranslate.Test
     [TestClass]
     public class Morse2TextTest
     {
-        private ITranslateType _morse2Text;
+        private ITranslateStrategy _morse2Text;
         [TestInitialize]
         public void SetUp()
         {
-            _morse2Text = new Morse2Text();
+            _morse2Text = new Morse2TextStrategy();
         }
 
         [TestMethod]

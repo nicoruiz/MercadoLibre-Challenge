@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MELITranslate.Business.Interfaces
 {
-    public interface ITranslateType
+    public interface ITranslateStrategy
     {
         string Translate(string value);
     }

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MELITranslate.Business.TranslateTypes
+namespace MELITranslate.Business.TranslateStrategies
 {
-    public class Morse2Text : ITranslateType
+    public class Morse2TextStrategy : ITranslateStrategy
     {
         public string Translate(string value)
         {
