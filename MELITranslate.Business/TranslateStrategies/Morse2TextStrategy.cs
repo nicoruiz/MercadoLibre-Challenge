@@ -1,4 +1,5 @@
-﻿using MELITranslate.Business.Interfaces;
+﻿using MELITranslate.Business.Exceptions;
+using MELITranslate.Business.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,20 @@ namespace MELITranslate.Business.TranslateStrategies
     {
         public string Translate(string value)
         {
-            string result = String.Empty;
-            var mCodes = value.Split().Where(x => x != " ").ToList();
-            foreach (string mCode in mCodes)
+            try
             {
-                result += mCode != "" ? TranslateTables.Morse2Text[mCode] : " ";
+                string result = String.Empty;
+                var mCodes = value.Split().Where(x => x != " ").ToList();
+                foreach (string mCode in mCodes)
+                {
+                    result += mCode != "" ? TranslateTables.Morse2Text[mCode] : " ";
+                }
+                return result;
+            }            
+            catch (Exception ex)
+            {
+                throw new BadInputException($"Error al intentar traducir el texto morse. Verifique el input '{value}' ingresado.");
             }
-            return result;
         }
     }
 }
