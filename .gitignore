@@ -5,3 +5,5 @@
 /MELITranslate.Business/obj
 /MELITranslate.Test/obj
 /MELITranslate.Test/bin/Debug/netcoreapp3.1
+/MELITranslate.API/bin/Release/netcoreapp3.1
+/MELITranslate.Business/bin/Release/netstandard2.0
