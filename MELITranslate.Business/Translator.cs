@@ -5,9 +5,9 @@ namespace MELITranslate.Business
 {
     public class Translator
     {
-        private ITranslateType _translateType { get; set; }
+        private ITranslateStrategy _translateType { get; set; }
 
-        public void SetTranslateType(ITranslateType translateType)
+        public void SetTranslateType(ITranslateStrategy translateType)
         {
             _translateType = translateType;
         }

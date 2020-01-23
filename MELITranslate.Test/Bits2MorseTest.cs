@@ -1,6 +1,6 @@
 using MELITranslate.Business;
 using MELITranslate.Business.Interfaces;
-using MELITranslate.Business.TranslateTypes;
+using MELITranslate.Business.TranslateStrategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MELITranslate.Test
@@ -8,21 +8,20 @@ namespace MELITranslate.Test
     [TestClass]
     public class Bits2MorseTest
     {
-        private Translator _translator; 
+        private ITranslateStrategy _bits2Morse;
         [TestInitialize]
         public void SetUp()
         {
-            _translator = new Translator();
-            _translator.SetTranslateType(new Bits2Morse());
+            _bits2Morse = new Bits2MorseStrategy();
         }
 
         [TestMethod]
         public void Given10InBinaryItShouldBeDecodedToEquivalentDotInMorse()
         {
-            string binDot = "10";
+            var binDot = "10";
 
-            var expected = ".";
-            var actual = _translator.Translate(binDot);
+            var expected = ". .-.-.-";
+            var actual = _bits2Morse.Translate(binDot);
 
             Assert.AreEqual(expected, actual);
         }
@@ -30,21 +29,32 @@ namespace MELITranslate.Test
         [TestMethod]
         public void Given11InBinaryItShouldBeDecodedToEquivalentDashInMorse()
         {
-            string binDot = "11";
+            var binDash = "11";
 
-            var expected = "-";
-            var actual = _translator.Translate(binDot);
+            var expected = "- .-.-.-";
+            var actual = _bits2Morse.Translate(binDash);
 
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void GivenHolaMeLiInBinaryItShouldBeDecodedToEquivalentInMorse()
+        public void GivenHolaMeLiWithFullStopInBinaryItShouldBeDecodedToEquivalentInMorse()
         {
-            string holaMeLiBin = "1010101001111111011011101001101100111101100110111010011010";
+            var holaMeLiBin = "101010100111111101101110100110110011110110011011101001101001101110111011";
 
-            var expected = ".... --- .-.. .-  -- . .-.. ..";
-            var actual = _translator.Translate(holaMeLiBin);
+            var expected = ".... --- .-.. .-  -- . .-.. .. .-.-.-";
+            var actual = _bits2Morse.Translate(holaMeLiBin);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GivenHolaMeLiWithLongPauseInBinaryItShouldBeDecodedToEquivalentInMorse()
+        {
+            var holaMeLiBin = "101010100111111101101110100110110011110110011011101001101000000000";
+
+            var expected = ".... --- .-.. .-  -- . .-.. .. .-.-.-";
+            var actual = _bits2Morse.Translate(holaMeLiBin);
 
             Assert.AreEqual(expected, actual);
         }
